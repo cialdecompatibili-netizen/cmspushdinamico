@@ -92,3 +92,21 @@ Decidere e implementare la differenziazione da cmspush verso one-page:
 Per ogni operazione sul PC di Mirco (file, cartelle, git, PowerShell) usare SEMPRE
 Windows-MCP:PowerShell. Non usare altri tool filesystem (Filesystem:*, filesystem:*)
 per leggere/scrivere/copiare su questo progetto - solo PowerShell diretto.
+
+---
+
+## REGOLA: zero valori hardcoded nel codice
+
+Qualsiasi path, URL, baseurl o testo che possa cambiare da repo a repo (o che l'utente
+potrebbe voler modificare) NON va scritto a mano nel codice. Va invece:
+
+1. Generato dinamicamente (Liquid `relative_url`, JS `site.baseurl`, `detectRepo()`)
+2. Oppure reso configurabile dalla UI dell'admin (tab Impostazioni/Tema/Integrazioni),
+   letto/scritto via GitHub API come fa già il resto del CMS
+
+Esempio errore gia corretto: `var BASE = '/cmspush'` in _includes/head/custom.html
+era hardcoded -> ora `var BASE = '{{ site.baseurl }}'`.
+
+Prima di pushare qualsiasi nuova feature, controllare con:
+Select-String -Path "_pages\*.md","_layouts\*.html","_includes\*.html" -Pattern '/cmspush|/onepagecmspush'
+Se compaiono path fissi del nome repo -> vanno resi dinamici o spostati in admin.
