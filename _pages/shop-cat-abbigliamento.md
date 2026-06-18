@@ -28,9 +28,9 @@ shop_category_name: Abbigliamento
 <div class="shop-list" id="prods-grid"></div>
 
 <script>
-const OWNER = 'cialdecompatibili-netizen';
-const REPO  = 'cmspush';
-const BASE  = 'https://cialdecompatibili-netizen.github.io/cmspush';
+const BASE  = window.location.origin + (window.SITE_BASE || '');
+const OWNER = window.location.hostname.split('.')[0];
+const REPO  = (window.SITE_BASE || '').replace(/^\//,'') || OWNER + '.github.io';
 const FILTER_CAT = '{{ page.shop_category }}';
 
 function parseFrontmatter(text) {

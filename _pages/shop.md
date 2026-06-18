@@ -31,9 +31,11 @@ author_profile: false
 <div class="shop-grid" id="prods-grid"></div>
 
 <script>
-const OWNER = 'cialdecompatibili-netizen';
-const REPO  = 'cmspush';
-const BASE  = 'https://cialdecompatibili-netizen.github.io/cmspush';
+// OWNER/REPO/BASE dinamici — funziona su qualsiasi fork senza toccare nulla
+const BASE  = window.location.origin + (window.SITE_BASE || '');
+const _repoPath = (window.SITE_BASE || '').replace(/^\//,'') || window.location.hostname.replace('.github.io','') + '.github.io';
+const OWNER = window.location.hostname.split('.')[0];
+const REPO  = (window.SITE_BASE || '').replace(/^\//,'') || OWNER + '.github.io';
 
 function parseFrontmatter(text) {
   const m = text.match(/^---\n([\s\S]*?)\n---/);

@@ -91,9 +91,9 @@ author_profile: false
 <div id="sp-toast" class="sp-toast"></div>
 
 <script>
-const OWNER = 'cialdecompatibili-netizen';
-const REPO  = 'cmspush';
-const BASE  = 'https://cialdecompatibili-netizen.github.io/cmspush';
+const BASE  = window.location.origin + (window.SITE_BASE || '');
+const OWNER = window.location.hostname.split('.')[0];
+const REPO  = (window.SITE_BASE || '').replace(/^\//,'') || OWNER + '.github.io';
 
 const REVIEWS_DEMO = [
   { name: "Marco R.", stars: 5, date: "12 apr 2026", text: "Qualità eccezionale, l'ho regalata al mio dentista e ha riso per una settimana intera. 😂" },
