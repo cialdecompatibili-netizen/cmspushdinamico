@@ -84,3 +84,11 @@ Decidere e implementare la differenziazione da cmspush verso one-page:
 - cmspush.rar, cmspushx.rar - archivi storici, ininfluenti
 - _posts/* - post demo ereditati da cmspush, da svuotare quando si differenzia il progetto
 - wb.ps1, wb2.ps1 - script storici di cmspush, verificare se servono ancora qui prima di eliminarli
+
+---
+
+## Strumento da usare SEMPRE
+
+Per ogni operazione sul PC di Mirco (file, cartelle, git, PowerShell) usare SEMPRE
+Windows-MCP:PowerShell. Non usare altri tool filesystem (Filesystem:*, filesystem:*)
+per leggere/scrivere/copiare su questo progetto - solo PowerShell diretto.
